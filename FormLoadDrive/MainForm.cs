@@ -43,24 +43,23 @@ namespace FormLoadDrive
             }
         }
 
-        static void DisplayTypesInAsm(Assembly asm)
-        {
-            string str = "***** Types in Assembly *****\n";
-            str  += $"->{asm.FullName}\n";
-            Type[] types = asm.GetTypes();
-            foreach (Type t in types)
-                str += $"Type: {t}\n";
-            MessageBox.Show(str);
-        }
+        //static void DisplayTypesInAsm(Assembly asm)
+        //{
+        //    string str = "***** Types in Assembly *****\n";
+        //    str  += $"->{asm.FullName}\n";
+        //    Type[] types = asm.GetTypes();
+        //    foreach (Type t in types)
+        //        str += $"Type: {t}\n";
+        //    MessageBox.Show(str);
+        //}
 
         void LoadForm(Assembly asm)
         {
             try
             {
-                Type type = asm.GetType("LabLibrary.LabForm");
-                object obj = Activator.CreateInstance(type);
-                MessageBox.Show("Type created successfully");
-                ((Form)obj).ShowDialog();
+                Type type = asm.GetType("LabLibrary.LabForm"); // get form class
+                object obj = Activator.CreateInstance(type);  // create an instance of it
+                ((Form)obj).ShowDialog();                     // Cast it to a Form and show it.
             }
             catch (Exception ex)
             {
